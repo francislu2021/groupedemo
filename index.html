@@ -7,9 +7,8 @@
     <title>weatherDog</title>
     <link rel="stylesheet" href="./assets/css/style.css" /> 
     <link rel="stylesheet" href="./assets/css/bulma-rtl.min.css" /> 
-    <!--francis jquery cdn-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src='./assets/js/script.js'></script>
 </head>
 
 <body>
@@ -53,11 +52,10 @@
         <button class="btn">Get Places</button>
         <div id="map"></div>
         <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAhdEGFgHhbbmtApHcGHmOB2qDTfbCp4&callback=initMap&libraries=&v=weekly" async></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAhdEGFgHhbbmtApHcGHmOB2qDTfbCp4&callback=initMap&libraries=&v=weekly"async></script>
         <p id="demo"></p>
     </div>
 
-    <script src='./assets/js/script.js'></script>
 <footer></footer>
 </body>
 </html>
