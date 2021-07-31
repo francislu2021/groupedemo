@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./assets/css/bulma-rtl.min.css" /> 
     <!--francis jquery cdn-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 </head>
 
 <body>
@@ -16,7 +17,7 @@
 <section>
     <nav id="navbar">
         <div class="container">
-            <h1 class="logo">weatherDog</h1>
+            <h1 class="logo">travelDog</h1>
             <ul>
                 <li><a class="current" href="index.html">Home</a></li>
                 <li><a href="find-places.html">Find Places</a></li>
@@ -44,22 +45,16 @@
         <input class="input" type="text" placeholder="Search">
 </div>
 
-<!--Francis-->
-<!--google map display-->
-<div class="container">
-<div id="map">
-    <h5 class="where">look where you are</h5>
-    <!--google maps js api-->
-<script async
-src="https://maps.googleapis.com/maps/api/js?librairies=places&key=AIzaSyCTAhdEGFgHhbbmtApHcGHmOB2qDTfbCp4&callback=initMap" async defer>
-</script>
-
-    </div>
-
+<!--Francis part - api-google map-google places-->
+<!--google map-->
     <!--Find Me and Get Places Buttons-->
     <div class="flex">
-        <button class="btn">Find Me</button>
+        <button onclick="getLocation()">Find Me</button>
         <button class="btn">Get Places</button>
+        <div id="map"></div>
+        <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAhdEGFgHhbbmtApHcGHmOB2qDTfbCp4&callback=initMap&libraries=&v=weekly" async></script>
+        <p id="demo"></p>
     </div>
 
     <script src='./assets/js/script.js'></script>
