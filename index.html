@@ -7,6 +7,7 @@
     <title>weatherDog</title>
     <link rel="stylesheet" href="./assets/css/style.css" /> 
     <link rel="stylesheet" href="./assets/css/bulma-rtl.min.css" /> 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     
 </head>
@@ -50,13 +51,11 @@
     <div class="flex">
         <button onclick="getLocation()">Find Me</button>
         <button class="btn">Get Places</button>
-        <div id="map"></div>
-        <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAhdEGFgHhbbmtApHcGHmOB2qDTfbCp4&callback=initMap&libraries=&v=weekly"async></script>
         
-    <div><p id="demo"></p></div>
     </div>
-    <script src='./assets/js/script.js'></script>
-<footer></footer>
-</body>
+
+    <div id="map" style="height: 500px"></div>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUFZv20HWnM8sS9P0LFAxwM5JTf2m2rE0&callback=initMap"></script>
+ <script src="app.js"></script>
 </html>
