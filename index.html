@@ -14,7 +14,7 @@
     <!--Main hero and navbar-->
 <section>
     <nav id="navbar">
-        <div class="container">
+        <div class="container1">
             <h1 class="logo">travelDog</h1>
             <ul>
                 <li><a class="current" href="index.html">Home</a></li>
@@ -43,15 +43,18 @@
 <!--google map-->
     <!--Find Me and Get Places Buttons-->
     <div class="flex">
-        <button onclick="getLocation()">Find Me</button>
+        <button class ="btn" onclick="getLocation()">Find Me</button>
         <button class="btn">Get Places</button>
         </div>
+
+        <p id="demo"></p>
         
         <main class="container">
             <div id="map" class="map"></div>
           </main>
           <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAhdEGFgHhbbmtApHcGHmOB2qDTfbCp4&callback=init"></script>
           <script src="./assets/js/script.js"></script>
+          
           
  
  </body>

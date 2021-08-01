@@ -103,3 +103,7 @@ body {
         margin: 0;
         padding: 0;
       }
+
+      #demo {
+          text-align: center;
+      }
