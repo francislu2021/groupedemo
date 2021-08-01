@@ -7,6 +7,7 @@
     <title>weatherDog</title>
     <link rel="stylesheet" href="./assets/css/style.css" /> 
     <link rel="stylesheet" href="./assets/css/bulma-rtl.min.css" /> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     
 </head>
 
@@ -51,9 +52,12 @@
         
         <main class="container">
             <div id="map" class="map"></div>
-          </main>
+            <!-- For displaying user's coordinate or error message. -->
+            <div id="demo" class="demo"></div>
+            <div id="info" class="info"></div>
+        </main>
           <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAhdEGFgHhbbmtApHcGHmOB2qDTfbCp4&callback=init"></script>
-          <script src="./assets/js/script.js"></script>
+          <script type="text/javascript" src="./assets/js/script.js"></script>
           
           
  
