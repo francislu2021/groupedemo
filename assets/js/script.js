@@ -33,84 +33,76 @@ function showError(error) {
 
 
 //google map display
-/**
-* Create google maps Map instance.
- * @param {number} lat
- * @param {number} lng
- * @return {Object}
- */
-const createMap = ({ lat, lng }) => {
-  return new google.maps.Map(document.getElementById('map'), {
-    center: { lat, lng },
-    zoom: 15
+
+
+let map;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: -34.397, lng: 150.644 },
+    zoom: 8,
   });
-};
+  var input = document.getElementById('searchInput');
+    map.controls[google.maps.ControlPositon.Top_LEFT].push(input);
 
-/**
- * Create google maps Marker instance.
- * @param {Object} map
- * @param {Object} position
- * @return {Object}
- */
-const createMarker = ({ map, position }) => {
-  return new google.maps.Marker({ map, position });
-};
+    var autocomplete = new google.maps.places.autocomplete(input);
+    autocomplete.bindTo('bounds', map)
 
-/**
- * Track the user location.
- * @param {Object} onSuccess
- * @param {Object} [onError]
- * @return {number}
- */
-const trackLocation = ({ onSuccess, onError = () => { } }) => {
-  if ('geolocation' in navigator === false) {
-    return onError(new Error('Geolocation is not supported by your browser.'));
-  }
+    var infowindow = new google.maps.infowindow();
+    var marker = new google.maps.Marker({
+    map: map,
+    anchorPoint: new google.maps.Point(0, -29)
+});
 
-  return navigator.geolocation.watchPosition(onSuccess, onError, {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0
-  });
-};
+autocomplete.addListener('place_changed', function(){
+    infowindow.close();
+    marker.setVisible(false)
+    var place = autocomplete.getPlace();
+    if (!place.gepmetry) {
+        window.alert("autocomplete's returned place contains no geometry, oops!");
+        return;
+    }
+    //if the place has a geometry, then present it on a map.
+if (place.geometry.viewpoint) {
+  map.fitBounds(place.geometry.viewpoint);
+}else{
+  map.setCenter(place.geometry.location);
+  map.setZoom(17);
+}
+marker.setIcon(({
+URL:place.icon,
+size: new google.maps.Size(71,71),
+origin: new google.maps.Point(0,0),
+anchor: new google.maps.Point(17,34),
+scaledSize: new google.maps.Size(35, 35)
+}));
+marker.setPosition(place.geometry.location);
+marker.setVisible(true);
 
-/**
- * Get position error message from the given error code.
- * @param {number} code
- * @return {String}
- */
-const getPositionErrorMessage = code => {
-  switch (code) {
-    case 1:
-      return 'Permission denied.';
-    case 2:
-      return 'Position unavailable.';
-    case 3:
-      return 'Timeout reached.';
-  }
+var address = '';
+if (place.address_components) {
+    address = [
+        (place.address_components[0] && place.address_components[0].short_name || ''),
+        (place.address_components[1] && place.address_components[1].short_name || ''),
+        (place.address_components[2] && place.address_components[2].short_name || '')
+        
+    ].join(' ');
 }
 
-/**
- * Initialize the application.
- * Automatically called by the google maps API once it's loaded.
-*/
-function init() {
-  const initialPosition = { lat: 59.32, lng: 17.84 };
-  const map = createMap(initialPosition);
-  const marker = createMarker({ map, position: initialPosition });
-  const $info = document.getElementById('info');
+infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+infowindow.open(map, marker);
 
-  let watchId = trackLocation({
-    onSuccess: ({ coords: { latitude: lat, longitude: lng } }) => {
-      marker.setPosition({ lat, lng });
-      map.panTo({ lat, lng });
-      $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
-      $info.classList.remove('error');
-    },
-    onError: err => {
-      console.log($info);
-      $info.textContent = `Error: ${err.message || getPositionErrorMessage(err.code)}`;
-      $info.classList.add('error');
+//location details
+for (var i=0; i<place.address_components.length; i++) {
+    if(place.address_components[i].types[0] == 'postal_code'){
+        document.getElementById('postal_code').innerHTML = place.address_components[i].long_name;
     }
-  });
+    if(place.address_components[i].types[0] == 'country') {
+        document.getElementById('country').innerHTML = place.address_components[i].long_name;
+    }
+}
+document.getElementById('location').innerHTML = place.formatted_address;
+document.getElementById('lat').innerHTML = place.geometry.location.lat();
+document.getElementById('lon').innerHTML = place.geometry.location.lon();
+});
 }

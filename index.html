@@ -13,12 +13,17 @@
         <button class="btn">Get Places</button>
     </div>
     <p id="demo"></p>
-    <main class="container">
-      <div id="map" class="map"></div>
-      <p id="info" class="info"></p>
-    </main>
+
+    <!--google map-->
+<div class="container">
+<!--search input-->
+<input id="searchInput" class="controls" type="text" placeholder="Enter a location">
+<!--google map display-->
+<div id="map">
 
     <script src="./assets/js/script.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAhdEGFgHhbbmtApHcGHmOB2qDTfbCp4&callback=init"></script>
+    <script async
+    src="https://maps.googleapis.com/maps/api/js?librairies=places&key=AIzaSyCTAhdEGFgHhbbmtApHcGHmOB2qDTfbCp4&callback=initMap" async defer>
+</script>
   </body>
 </html>
