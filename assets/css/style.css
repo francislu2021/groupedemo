@@ -4,8 +4,44 @@
     box-sizing: border-box;
 }
 
+/*map section*/
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+       #map {
+        height: 100%;
+      }
+      
+      /* Optional: Makes the sample page fill the window. */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+
+
+
+/*weather section*/
 body {
     font-family: Arial, Helvetica, sans-serif
+}
+
+
+h3{
+    font-weight: bold;
+}
+.forecast{
+    
+    font-size: 0.9em;
+}
+span{
+    font-size: 1em;
+}
+li:hover{
+    background-color: rgb(112, 108, 107);
+    color:white;
+    text-decoration: underline;
 }
 
 #navbar {
@@ -85,25 +121,3 @@ body {
     display: flex;
     justify-content: center;
   }
-
-.where {
-    text-align: center;
-}
-
-/* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-       #map {
-        height: 100%;
-      }
-      
-      /* Optional: Makes the sample page fill the window. */
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-
-      #demo {
-          text-align: center;
-      }
