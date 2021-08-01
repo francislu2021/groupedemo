@@ -7,8 +7,6 @@
     <title>weatherDog</title>
     <link rel="stylesheet" href="./assets/css/style.css" /> 
     <link rel="stylesheet" href="./assets/css/bulma-rtl.min.css" /> 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     
 </head>
 
@@ -52,10 +50,12 @@
         <button onclick="getLocation()">Find Me</button>
         <button class="btn">Get Places</button>
         
-    </div>
-
-    <div id="map" style="height: 500px"></div>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUFZv20HWnM8sS9P0LFAxwM5JTf2m2rE0&callback=initMap"></script>
- <script src="app.js"></script>
+        <main class="container">
+            <div id="map" class="map"></div>
+          </main>
+      
+          <script src="./assets/js/script.js"></script>
+          <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUFZv20HWnM8sS9P0LFAxwM5JTf2m2rE0&callback=init"></script>
+ </div>
+ </body>
 </html>
