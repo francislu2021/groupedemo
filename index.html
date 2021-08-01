@@ -1,65 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>weatherDog</title>
-    <link rel="stylesheet" href="./assets/css/style.css" /> 
-    <link rel="stylesheet" href="./assets/css/bulma-rtl.min.css" /> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    
-</head>
-
-<body>
-    <!--Main hero and navbar-->
-<section>
-    <nav id="navbar">
-        <div class="container1">
-            <h1 class="logo">travelDog</h1>
-            <ul>
-                <li><a class="current" href="index.html">Home</a></li>
-                <li><a href="find-places.html">Find Places</a></li>
-                <li><a href="about-us.html">About Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-        <div class="showcase"></div>
-</section>
-
-    <div class="main-text">
-        <br>
-        <br>
-        <p>Lorem
-            </p>
-    </div>
-
-    <!--Search bar-->
-    <div class="search-bar">
-        <input class="input" type="text" placeholder="Search">
-</div>
-
-<!--Francis part - api-google map-google places-->
-<!--google map-->
-    <!--Find Me and Get Places Buttons-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>🌏 Google Maps Geolocation Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="./assets/css/style.css">
+  </head>
+  <body>
     <div class="flex">
-        <button class ="btn" onclick="getLocation()">Find Me</button>
+        <button class="btn" onclick="getLocation()">Find Me</button>
         <button class="btn">Get Places</button>
-        </div>
+    </div>
+    <p id="demo"></p>
+    <main class="container">
+      <div id="map" class="map"></div>
+      <p id="info" class="info"></p>
+    </main>
 
-        <p id="demo"></p>
-        
-        <main class="container">
-            <div id="map" class="map"></div>
-            <!-- For displaying user's coordinate or error message. -->
-            <div id="demo" class="demo"></div>
-            <div id="info" class="info"></div>
-        </main>
-          <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAhdEGFgHhbbmtApHcGHmOB2qDTfbCp4&callback=init"></script>
-          <script type="text/javascript" src="./assets/js/script.js"></script>
-          
-          
- 
- </body>
+    <script src="./assets/js/script.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAhdEGFgHhbbmtApHcGHmOB2qDTfbCp4&callback=init"></script>
+  </body>
 </html>
