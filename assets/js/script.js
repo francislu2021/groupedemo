@@ -6,6 +6,13 @@ function init() {
     zoom: 15
   });
 
+  navigator.geolocation.getCurrentPosition(
+    // On success
+    position => console.log(`Lat: ${position.coords.latitude} Lng: ${position.coords.longitude}`),
+    // On error
+    err => alert(`Error (${err.code}): ${err.message}`)
+  );
+
   const marker = new google.maps.Marker({ map, position: initialPosition });
 
   // Get user's location
