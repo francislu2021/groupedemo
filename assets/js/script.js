@@ -1,13 +1,10 @@
 //google map section
-// Note: This example requires that you consent to location sharing when
-// prompted by your browser. If you see the error "The Geolocation service
-// failed.", it means you probably did not give permission for the browser to
-// locate you.
+//43.973810027649364, -79.27475048680624
 let map, infoWindow;
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: -34.397, lng: 150.644 },
+    center: { lat: 43.973810027649364, lng: -79.27475048680624 },
     zoom: 6,
   });
   infoWindow = new google.maps.InfoWindow();
@@ -49,15 +46,6 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   );
   infoWindow.open(map);
 }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -107,9 +95,9 @@ function currentWeather(city){
         //Dta object from server side Api for icon property.
         var weathericon= response.weather[0].icon;
         var iconurl="https://openweathermap.org/img/wn/"+weathericon +"@2x.png";
-        // The date format method is taken from the  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+  
         var date=new Date(response.dt*1000).toLocaleDateString();
-        //parse the response for name of city and concanatig the date and icon.
+        //parse the response for name of city and the date and icon.
         $(currentCity).html(response.name +"("+date+")" + "<img src="+iconurl+">");
         // parse the response to display the current temperature.
         // Convert the temp to fahrenheit
@@ -123,7 +111,7 @@ function currentWeather(city){
         var windsmph=(ws*2.237).toFixed(1);
         $(currentWSpeed).html(windsmph+"MPH");
         // Display UVIndex.
-        //By Geographic coordinates method and using appid and coordinates as a parameter we are going build our uv query url inside the function below.
+        //By Geographic coordinates method and using appid and coordinates as a parameterto build our uv query url inside the function below.
         UVIndex(response.coord.lon,response.coord.lat);
         forecast(response.id);
         if(response.cod==200){
@@ -147,9 +135,9 @@ function currentWeather(city){
 
     });
 }
-    // returns the UVIindex response.
+    // returns the UVIindex response
 function UVIndex(ln,lt){
-    //lets build the url for uvindex.
+    //the url for uvindex.
     var uvqURL="https://api.openweathermap.org/data/2.5/uvi?appid="+ APIKey+"&lat="+lt+"&lon="+ln;
     $.ajax({
             url:uvqURL,
@@ -159,7 +147,7 @@ function UVIndex(ln,lt){
             });
 }
     
-// display the 5 days forecast for the current city.
+// display the 5 days forecast for the searched city.
 function forecast(cityid){
     var dayover= false;
     var queryforcastURL="https://api.openweathermap.org/data/2.5/forecast?id="+cityid+"&appid="+APIKey;
@@ -185,7 +173,7 @@ function forecast(cityid){
     });
 }
 
-//Daynamically add the passed city on the search history
+//add the passed city on the search history
 function addToList(c){
     var listEl= $("<li>"+c.toUpperCase()+"</li>");
     $(listEl).attr("class","list-group-item");
@@ -216,7 +204,7 @@ function loadlastCity(){
     }
 
 }
-//Clear the search history from the page
+//Clear the search history 
 function clearHistory(event){
     event.preventDefault();
     sCity=[];
@@ -224,7 +212,7 @@ function clearHistory(event){
     document.location.reload();
 
 }
-//Click Handlers
+//Click Handlers part
 $("#search-button").on("click",displayWeather);
 $(document).on("click",invokePastSearch);
 $(window).on("load",loadlastCity);
